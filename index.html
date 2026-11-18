@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>meme</title>
+<style>
+  html,body{margin:0;height:100%;background:#000}
+  body{display:flex;align-items:center;justify-content:center}
+  img{max-width:100vw;max-height:100vh;object-fit:contain}
+</style>
+</head>
+<body>
+<img id="m" alt="meme">
+<script>
+  // берётся первый найденный: meme.gif → meme.webp → meme.png → meme.jpg
+  const names = ["meme.gif", "meme.webp", "meme.png", "meme.jpg"];
+  const img = document.getElementById("m");
+  let i = 0;
+  const v = Date.now();
+  img.onerror = () => { if (++i < names.length) img.src = names[i] + "?v=" + v; };
+  img.src = names[0] + "?v=" + v;
+</script>
+</body>
+</html>
